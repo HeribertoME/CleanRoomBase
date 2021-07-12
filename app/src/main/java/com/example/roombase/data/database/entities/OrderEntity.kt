@@ -11,7 +11,8 @@ data class OrderEntity(
     @PrimaryKey (autoGenerate = true) var sellerOrderId: Int,
     var orderDate: String = "",
     var paymentData: String = "",
-    var apiErrorSqs: ApiErrorSqs? = null
+    var apiErrorSqs: ApiErrorSqs? = null,
+    var paymentMethodId: Int
 ) : BaseEntity<OrderBo> {
 
     override fun toBo(): OrderBo =

@@ -10,6 +10,7 @@ import com.example.roombase.domain.bussinesslogic.PersonUseCaseImpl
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
@@ -24,8 +25,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val persons = mPresenter.getPersons()
-        Log.d("TAG", "People = $persons")
+        runBlocking {
+            val persons = mPresenter.getPersons()
+            Log.d("TAG", "People = $persons")
+        }
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector

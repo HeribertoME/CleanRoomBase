@@ -8,10 +8,10 @@ class PersonUseCaseImpl @Inject constructor(
     private val dataManager: DataManager
 ) : PersonUseCase {
 
-    override fun getPersons(): List<Person> {
+    override suspend fun getPersons(): List<Person> {
         val entity = dataManager.getDBRepository().personDao().getAll()
         val personList = mutableListOf<Person>()
-        entity?.forEach {
+        entity.forEach {
             personList.add(Person(it.id, it.name, it.age, it.address))
         }
         return personList

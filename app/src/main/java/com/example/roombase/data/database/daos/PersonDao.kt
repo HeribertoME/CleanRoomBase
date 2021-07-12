@@ -15,7 +15,7 @@ abstract class PersonDao : BaseDao<PersonEntity> {
      * Query method to get all person
      */
     @Query("SELECT * FROM person")
-    abstract fun getAll(): List<PersonEntity>?
+    abstract suspend fun getAll(): List<PersonEntity>
 
     /**
      * Method to get people by id
@@ -23,6 +23,6 @@ abstract class PersonDao : BaseDao<PersonEntity> {
      * @return person entity
      */
     @Transaction @Query("SELECT * FROM person WHERE id = :id")
-    abstract fun findById(id: Int) : PersonEntity?
+    abstract suspend fun findById(id: Int) : PersonEntity
 
 }

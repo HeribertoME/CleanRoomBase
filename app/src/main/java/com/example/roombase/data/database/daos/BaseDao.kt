@@ -1,7 +1,6 @@
 package com.example.roombase.data.database.daos
 
 import androidx.room.*
-import io.reactivex.Single
 
 interface BaseDao<T> {
 
@@ -13,7 +12,7 @@ interface BaseDao<T> {
      * @return single event
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(obj: T): Single<Long>
+    suspend fun insert(obj: T): Long
 
     /**
      * Insert a list of objects on db
@@ -23,7 +22,7 @@ interface BaseDao<T> {
      * @return single event
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg obj: T): Single<Array<Long>>
+    suspend fun insert(vararg obj: T): List<Long>
 
     /**
      * Update an object from the db
@@ -33,7 +32,7 @@ interface BaseDao<T> {
      * @return single event
      */
     @Update
-    fun update(obj: T): Single<Int>
+    suspend fun update(obj: T): Int
 
     /**
      * Delete an object from the database
@@ -43,5 +42,5 @@ interface BaseDao<T> {
      * @return single event
      */
     @Delete
-    fun delete(obj: T): Single<Int>
+    suspend fun delete(obj: T): Int
 }

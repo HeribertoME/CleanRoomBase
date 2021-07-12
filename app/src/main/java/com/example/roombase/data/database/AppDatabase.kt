@@ -1,9 +1,7 @@
 package com.example.roombase.data.database
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
-import androidx.room.TypeConverters
+import android.content.Context
+import androidx.room.*
 import com.example.roombase.data.database.daos.PersonDao
 import com.example.roombase.data.database.entities.PersonEntity
 
@@ -15,7 +13,6 @@ import com.example.roombase.data.database.entities.PersonEntity
         PersonEntity::class,
     ], version = 1, exportSchema = false
 )
-@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -30,5 +27,28 @@ abstract class AppDatabase : RoomDatabase() {
      * @return person dao
      */
     abstract fun personDao(): PersonDao
+
+    /**
+     * Configuration for tests
+     */
+    // Get reference of the AppDatabase and assign it null value
+    @Volatile
+    private var instance : AppDatabase? = null
+    private val LOCK = Any()
+
+    // create an operator fun which has context as a parameter
+    // assign value to the instance variable
+    operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+        instance ?: buildDatabase(context).also {
+            instance = it
+        }
+    }
+
+    // create a buildDatabase instance function assign the required values
+    private fun buildDatabase(context: Context) = Room.databaseBuilder(
+        context.applicationContext,
+        AppDatabase::class.java,
+        DB_NAME
+    ).fallbackToDestructiveMigration().build()
 
 }

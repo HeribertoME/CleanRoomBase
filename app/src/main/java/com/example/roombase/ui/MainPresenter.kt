@@ -7,6 +7,6 @@ class MainPresenter constructor(
     private val personUseCase: PersonUseCase
 ) {
 
-    fun getPersons(): List<Person> = personUseCase.getPersons()
+    suspend fun getPersons(): List<Person> = personUseCase.getPersons()
 
 }
