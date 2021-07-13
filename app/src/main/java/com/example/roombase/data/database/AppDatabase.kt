@@ -2,8 +2,8 @@ package com.example.roombase.data.database
 
 import android.content.Context
 import androidx.room.*
-import com.example.roombase.data.database.daos.PersonDao
-import com.example.roombase.data.database.entities.PersonEntity
+import com.example.roombase.data.database.daos.*
+import com.example.roombase.data.database.entities.*
 
 /**
  * AppDatabase
@@ -11,8 +11,15 @@ import com.example.roombase.data.database.entities.PersonEntity
 @Database(
     entities = [
         PersonEntity::class,
+        OrderEntity::class,
+        PaymentMethodTypeEntity::class,
+        ShoppingCartEntity::class,
+        PartnerEntity::class,
+        StoreEntity::class,
+        SessionEntity::class
     ], version = 1, exportSchema = false
 )
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -27,6 +34,36 @@ abstract class AppDatabase : RoomDatabase() {
      * @return person dao
      */
     abstract fun personDao(): PersonDao
+
+    /**
+     * Method to get order DAO
+     */
+    abstract fun orderDao(): OrderDao
+
+    /**
+     * Method to get payment method type DAO
+     */
+    abstract fun paymentMethodDao(): PaymentMethodDao
+
+    /**
+     * Method to get shopping cart DAO
+     */
+    abstract fun shoppingCartDao(): ShoppingCartDao
+
+    /**
+     * Method to get partner DAO
+     */
+    abstract fun partnerDao(): PartnerDao
+
+    /**
+     * Method to get store DAO
+     */
+    abstract fun storeDao(): StoreDao
+
+    /**
+     * Method to get session DAO
+     */
+    abstract fun sessionDao(): SessionDao
 
     /**
      * Configuration for tests

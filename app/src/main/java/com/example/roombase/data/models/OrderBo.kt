@@ -10,7 +10,9 @@ data class OrderBo(
     var orderDate: String = "",
     var paymentData: String = "",
     var apiErrorSqs: ApiErrorSqs? = null,
-    var paymentMethodId: Int = 0
+    var paymentMethodId: Int = 0,
+    var shoppingCartId: Int = 0,
+    var partnerId: Int = 0
 ) : Parcelable, BaseBo<OrderEntity> {
 
     override fun toEntity(): OrderEntity =
@@ -19,6 +21,8 @@ data class OrderBo(
             orderDate = orderDate,
             paymentData = paymentData,
             apiErrorSqs = apiErrorSqs,
-            paymentMethodId = paymentMethodId)
+            paymentMethodId = paymentMethodId,
+            shoppingCartId = shoppingCartId,
+            partnerId = partnerId)
 
 }

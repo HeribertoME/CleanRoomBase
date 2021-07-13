@@ -1,6 +1,7 @@
 package com.example.roombase.data.database
 
 import androidx.room.TypeConverter
+import com.example.roombase.data.models.ApiErrorSqs
 import com.google.gson.Gson
 
 /**
@@ -8,17 +9,31 @@ import com.google.gson.Gson
  */
 class Converters {
 
+    // Example
+    //@TypeConverter
+    //fun objectToJson(obj: Any?): String? = Gson().toJson(obj)
+
+    //@TypeConverter
+    //fun objectFromJson(str: String): Any = Gson().fromJson(str, Any::class.java)
+
     /**
-     * Type converter for some object to json
+     * Type converter for api error object to json string
      *
-     * @param obj Object, replace for specific object
+     * @param apiErrorObj Api Error Object
      *
      * @return json
      */
     @TypeConverter
-    fun objectToJson(obj: Any?): String? = Gson().toJson(obj)
+    fun apiErrorObjectToJson(apiErrorObj: ApiErrorSqs?): String? = Gson().toJson(apiErrorObj)
 
+    /**
+     * Type converter for api error object from json string
+     *
+     * @param str String json
+     *
+     * @return ApiErrorSqs object
+     */
     @TypeConverter
-    fun objectFromJson(str: String): Any = Gson().fromJson(str, Any::class.java)
+    fun apiErrorObjectFromJson(str: String?): ApiErrorSqs? = Gson().fromJson(str, ApiErrorSqs::class.java)
 
 }

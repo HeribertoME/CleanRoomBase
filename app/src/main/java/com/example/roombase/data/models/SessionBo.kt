@@ -10,7 +10,8 @@ data class SessionBo(
     var accessToken: String? = null,
     var deviceSerialNumber: String? = null,
     var isPos: Boolean,
-    var userName: String? = null
+    var userName: String? = null,
+    var partnerId: Int = 0
 ) : Parcelable, BaseBo<SessionEntity> {
 
     override fun toEntity(): SessionEntity =
@@ -19,6 +20,7 @@ data class SessionBo(
             accessToken = accessToken,
             deviceSerialNumber = deviceSerialNumber,
             isPos = isPos,
-            userName = userName)
+            userName = userName,
+            partnerId = partnerId)
 
 }

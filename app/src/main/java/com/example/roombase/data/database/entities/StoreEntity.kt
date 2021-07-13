@@ -7,7 +7,7 @@ import com.example.roombase.utils.TABLE_STORE
 
 @Entity(tableName = TABLE_STORE)
 data class StoreEntity(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
     var storeId: String = "",
     var vtexMarketplace: String = "",
     var vtexFranchise: String = "",

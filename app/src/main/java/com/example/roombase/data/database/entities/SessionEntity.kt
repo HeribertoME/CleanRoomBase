@@ -7,11 +7,12 @@ import com.example.roombase.utils.TABLE_SESSION
 
 @Entity(tableName = TABLE_SESSION)
 data class SessionEntity(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
     var accessToken: String? = null,
     var deviceSerialNumber: String? = null,
-    var isPos: Boolean,
-    var userName: String? = null
+    var isPos: Boolean = false,
+    var userName: String? = null,
+    var partnerId: Int = 0
 ) : BaseEntity<SessionBo> {
 
     override fun toBo(): SessionBo =
@@ -20,6 +21,7 @@ data class SessionEntity(
             accessToken = accessToken,
             deviceSerialNumber = deviceSerialNumber,
             isPos = isPos,
-            userName = userName)
+            userName = userName,
+            partnerId = partnerId)
 
 }

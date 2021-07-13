@@ -11,7 +11,8 @@ data class PartnerBo(
     var middleName: String = "",
     var familyName: String = "",
     var mobilePhone: String = "",
-    var email: String = ""
+    var email: String = "",
+    var storeId: Int = 0
 ) : Parcelable, BaseBo<PartnerEntity> {
 
     override fun toEntity(): PartnerEntity =
@@ -21,6 +22,7 @@ data class PartnerBo(
             middleName = middleName,
             familyName = familyName,
             mobilePhone = mobilePhone,
-            email = email)
+            email = email,
+            storeId = storeId)
 
 }

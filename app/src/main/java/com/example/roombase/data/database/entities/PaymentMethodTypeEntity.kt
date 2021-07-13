@@ -7,7 +7,7 @@ import com.example.roombase.utils.TABLE_PAYMENT_METHOD_TYPE
 
 @Entity(tableName = TABLE_PAYMENT_METHOD_TYPE)
 data class PaymentMethodTypeEntity(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
     var name: String = "",
     var description: String = "",
     var image: String = "",

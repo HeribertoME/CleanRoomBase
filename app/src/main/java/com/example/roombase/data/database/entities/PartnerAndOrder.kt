@@ -3,11 +3,11 @@ package com.example.roombase.data.database.entities
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class PaymentMethodTypeAndOrder(
-    @Embedded var paymentMethodType: PaymentMethodTypeEntity,
+data class PartnerAndOrder(
+    @Embedded var partner: PartnerEntity,
     @Relation(
         parentColumn = "id",
-        entityColumn = "paymentMethodId"
+        entityColumn = "partnerId"
     )
     var order: OrderEntity
 )

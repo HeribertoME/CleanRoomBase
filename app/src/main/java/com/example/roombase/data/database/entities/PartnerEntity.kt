@@ -8,12 +8,13 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = TABLE_PARTNER)
 data class PartnerEntity(
-    @SerializedName("id") @PrimaryKey(autoGenerate = true) var id: Int,
+    @SerializedName("id") @PrimaryKey(autoGenerate = true) var id: Int = 0,
     @SerializedName("name") var name: String = "",
     @SerializedName("middleName") var middleName: String = "",
     @SerializedName("familyName") var familyName: String = "",
     @SerializedName("mobilePhone") var mobilePhone: String = "",
-    @SerializedName("email") var email: String = ""
+    @SerializedName("email") var email: String = "",
+    var storeId: Int = 0
 ) : BaseEntity<PartnerBo> {
 
     override fun toBo(): PartnerBo =
@@ -23,6 +24,7 @@ data class PartnerEntity(
             middleName = middleName,
             familyName = familyName,
             mobilePhone = mobilePhone,
-            email = email)
+            email = email,
+            storeId = storeId)
 
 }

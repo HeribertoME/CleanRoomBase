@@ -22,7 +22,7 @@ interface BaseDao<T> {
      * @return single event
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(vararg obj: T): List<Long>
+    suspend fun insert(obj: List<T>): List<Long>
 
     /**
      * Update an object from the db

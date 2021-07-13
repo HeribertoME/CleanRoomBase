@@ -8,11 +8,13 @@ import com.example.roombase.utils.TABLE_ORDER
 
 @Entity(tableName = TABLE_ORDER)
 data class OrderEntity(
-    @PrimaryKey (autoGenerate = true) var sellerOrderId: Int,
+    @PrimaryKey (autoGenerate = true) var sellerOrderId: Int = 0,
     var orderDate: String = "",
     var paymentData: String = "",
     var apiErrorSqs: ApiErrorSqs? = null,
-    var paymentMethodId: Int
+    var paymentMethodId: Int = 0,
+    var shoppingCartId: Int = 0,
+    var partnerId: Int = 0
 ) : BaseEntity<OrderBo> {
 
     override fun toBo(): OrderBo =
@@ -20,6 +22,9 @@ data class OrderEntity(
             sellerOrderId = sellerOrderId,
             orderDate = orderDate,
             paymentData = paymentData,
-            apiErrorSqs = apiErrorSqs)
+            apiErrorSqs = apiErrorSqs,
+            paymentMethodId = paymentMethodId,
+            shoppingCartId = shoppingCartId,
+            partnerId = partnerId)
 
 }

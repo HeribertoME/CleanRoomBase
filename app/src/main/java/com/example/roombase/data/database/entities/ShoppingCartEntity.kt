@@ -7,10 +7,10 @@ import com.example.roombase.utils.TABLE_SHOPPING_CART
 
 @Entity(tableName = TABLE_SHOPPING_CART)
 data class ShoppingCartEntity(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
     var status: String = "",
     var total: String = "",
-    var totalDiscount: String
+    var totalDiscount: String = ""
 ) : BaseEntity<ShoppingCartBo> {
 
     override fun toBo(): ShoppingCartBo =
